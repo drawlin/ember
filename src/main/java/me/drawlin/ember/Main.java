@@ -12,6 +12,10 @@ import java.util.logging.Logger;
 
 public class Main extends Application {
 
+    public static String USERNAME = "";
+    public static String PASSWORD = "";
+    public static String NEW_USERNAME = "drawlin";
+
     private static final Logger logger = Logger.getLogger("ember");
 
     @Override

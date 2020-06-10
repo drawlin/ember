@@ -29,10 +29,10 @@ public class NameChangeTask {
         Thread.sleep(TimeUnit.SECONDS.toMillis(3));
 
         // Get the email field and enter in our email
-        webDriver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(Controller.USERNAME);
+        webDriver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys(Main.USERNAME);
 
         // Get the password field and enter in our password
-        webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(Controller.PASSWORD);
+        webDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(Main.PASSWORD);
 
         // Wait 1 second before entering the credentials
         Thread.sleep(TimeUnit.SECONDS.toMillis(1));
@@ -66,19 +66,21 @@ public class NameChangeTask {
         webDriver.findElement(By.xpath("//*[@id=\"app-profile-admin\"]/div/div[2]/div/div[5]/div[1]/dl/dd/button")).click();
 
         // Get the new username field and enter it
-        webDriver.findElement(By.xpath("//*[@id=\"newName\"]")).sendKeys(Controller.NEW_USERNAME);
+        webDriver.findElement(By.xpath("//*[@id=\"newName\"]")).sendKeys(Main.NEW_USERNAME);
 
         WebElement errorElement = webDriver.findElement(By.xpath("//*[@id=\"newNameChangeError\"]"));
         if (errorElement != null && errorElement.getText() != null) {
             Logger.log(Level.SEVERE, errorElement.getText());
+            // TODO: Refresh and retry after 'x' seconds if it fails
             return;
         }
 
         // Get the password verification button and enter our password
-        webDriver.findElement(By.xpath("//*[@id=\"newNamePassword\"]")).sendKeys(Controller.PASSWORD);
+        webDriver.findElement(By.xpath("//*[@id=\"newNamePassword\"]")).sendKeys(Main.PASSWORD);
 
         // Get the confirm button and click it
         webDriver.findElement(By.xpath("//*[@id=\"app-profile-admin\"]/div/div[2]/div/div[5]/div[2]/div/form/button")).click();
+
     }
 
 }
